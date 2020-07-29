@@ -1,17 +1,37 @@
 """Fizzbuzz code with raindrops"""
 
-def convert(number):
-    # create an empty string to add raindrops to
-    sound = ''
-    # create conditionals to go through each modulo
-    if number % 3 == 0:
-        sound += "Pling"
-    if number % 5 == 0:
-        sound += "Plang"
-    if number % 7 == 0:
-        sound += "Plong"
-    # if sound is empty because doesn't have factor's return number as string
-    if sound == '':
+# first try
+# def convert(number):
+#     # create an empty string to add raindrops to
+#     sound = ''
+#     # create conditionals to go through each modulo
+#     if number % 3 == 0:
+#         sound += "Pling"
+#     if number % 5 == 0:
+#         sound += "Plang"
+#     if number % 7 == 0:
+#         sound += "Plong"
+#     # if sound is empty because it doesn't have factor's return number as string
+#     if sound == '':
+#         return str(number)
+#     return sound
+
+rain_drop_dict = {
+    "Pling": 3,
+    "Plang": 5,
+    "Plong": 7
+}
+
+def convert(number, dict=rain_drop_dict):
+    return_value = ''
+    for key, value in dict.items():
+        if number % value == 0:
+            return_value += key
+    if return_value == '':
         return str(number)
-    return sound
+    return return_value
+
+
+test1 = convert(15, rain_drop_dict)
+print(test1)
 
