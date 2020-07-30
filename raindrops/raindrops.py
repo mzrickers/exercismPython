@@ -1,6 +1,5 @@
 """Fizzbuzz code with raindrops"""
-
-# first try
+# first try -------------------------------------------------------------------------------
 # def convert(number):
 #     # create an empty string to add raindrops to
 #     sound = ''
@@ -8,7 +7,7 @@
 #     if number % 3 == 0:
 #         sound += "Pling"
 #     if number % 5 == 0:
-#         sound += "Plang"
+#         sound += "Pladng"
 #     if number % 7 == 0:
 #         sound += "Plong"
 #     # if sound is empty because it doesn't have factor's return number as string
@@ -16,7 +15,7 @@
 #         return str(number)
 #     return sound
 
-# Second Try
+# Second Try --------------------------------------------------------------------------------
 # rain_drop_dict = {
 #     "Pling": 3,
 #     "Plang": 5,
@@ -38,18 +37,29 @@
 # print(test1)
 
 
-# Third time's the charm
-RULES = [
-    ["Pling", 3],
-    ["Plang", 5],
-    ["Plong", 7]
-]
+# Third time's the charm ------------------------------------------------------------------------
+# RULES = [
+#     ["Pling", 3],
+#     ["Plang", 5],
+#     ["Plong", 7]
+# ]
+
+# def convert(num, arr=RULES):
+#     filtered = [rain_drop[0] for rain_drop in arr if num % rain_drop[1] == 0]
+#     if filtered:
+#         return "".join(filtered)
+#     return str(num)
+
+# Fourth Try ------------------------------------------------------------------------------------
+RULES = (
+    ("Pling", 3),
+    ("Plang", 5),
+    ("Plong", 7)
+)
 
 def convert(num, arr=RULES):
-    filtered = [rain_drop[0] for rain_drop in arr if num % rain_drop[1] == 0]
-    if filtered:
-        return "".join(filtered)
-    return str(num)
+    return "".join([drop for drop, factor in arr if num % factor == 0]) or str(num)
 
-test1 = convert(1)
-print(test1)
+
+# test1 = convert(15)
+# print(test1)
